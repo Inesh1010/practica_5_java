@@ -1,87 +1,41 @@
 package com.MovableObjects;
-import java.lang.Math;
 
-public class MovableCircle extends Circle implements Moving {
+public class MovableCircle extends Circle implements Movable {
 
-    protected double centralX;
-    protected double centralY;
-    protected double curvePointX;
-    protected double curvePointY;
+    private int radius;
+    private MovablePoint center;
 
-
-
-    public MovableCircle() {}
-
-    public MovableCircle(double radius, double centralX, double centralY) {
-        super(radius);
-        this.centralX = centralX;
-        this.centralY = centralY;
-        this.curvePointX = centralX;
-        this.curvePointY = centralY + radius;
+    public MovableCircle(int x, int y, int xSpeed, int ySpeed, int radius) {
+        super();
+        this.radius = radius;
+        this.center = new MovablePoint(x, y, xSpeed, ySpeed);
     }
-
-    public MovableCircle(double radius, double centralX, double centralY, String color, boolean filled) {
-        super(radius, color, filled);
-        this.centralX = centralX;
-        this.centralY = centralY;
-        this.curvePointX = centralX;
-        this.curvePointY = centralY + radius;
-    }
-
-
-
-    public double radiusLength() {
-        return Math.sqrt( Math.pow(this.curvePointX - this.centralX,2) + Math.pow(this.curvePointY - this.centralY,2) );
-    }
-
-
-
-    public void setCentralCoord(double x, double y) {
-        this.centralX = x;
-        this.centralY = y;
-    }
-
-
-    public void setCentralX(double x) {
-        this.centralX = x;
-    }
-
-    public double getCentralX() {
-        return this.centralX;
-    }
-
-
-
-    public void setCentralY(double y) {
-        this.centralY = y;
-    }
-
-    public double getCentralY() {
-        return this.centralY;
-    }
-
-
-
-    @Override
-    public void move(double displacementX, double displacementY) {
-
-        double radiusVelocityHypotenuse = Math.sqrt( Math.pow(displacementX,2) + Math.pow(displacementY, 2));
-        double cos = displacementY / radiusVelocityHypotenuse;
-        double sin = displacementX / radiusVelocityHypotenuse;
-
-        this.centralX += displacementX;
-        this.centralY += displacementY;
-
-        // rotates clockwise
-        this.curvePointX = this.centralX + this.radius * cos;
-        this.curvePointY = this.centralY - this.radius * sin; // add r*sin(a) instead subtracting for rotate counterclockwise
-
-    }
-
 
     @Override
     public String toString() {
-        return "This circle moves...";
+        return "MovableCircle{" + "radius=" + radius + ", center=" + center + ", radius=" + radius + ", color='" + color + '\'' + ", filled=" + filled+'}';
+    }
+
+    @Override
+    public void moveUp() {
+        center.moveUp();
+    }
+
+    @Override
+    public void moveDown() {
+        center.moveDown();
+    }
+
+    @Override
+    public void moveLeft() {
+        center.moveLeft();
+    }
+
+    @Override
+    public void moveRight() {
+        center.moveRight();
     }
 
 }
+
+

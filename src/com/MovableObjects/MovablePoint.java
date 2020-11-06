@@ -1,71 +1,42 @@
 package com.MovableObjects;
 
-public class MovablePoint extends Shape implements Moving {
+public class MovablePoint implements com.MovableObjects.Movable {
 
-    protected double x;
-    protected double y;
+    int x;
+    int y;
+    int xSpeed;
+    int ySpeed;
 
-
-
-    public MovablePoint() {}
-
-    public MovablePoint(double initX, double initY) {
-        this.x = initX;
-        this.y = initY;
-    }
-
-
-
-    public void setCoord(double x, double y) {
+    public MovablePoint(int x, int y, int xSpeed, int ySpeed) {
         this.x = x;
         this.y = y;
-    }
-
-
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getX() {
-        return this.x;
-    }
-
-
-
-    public void setY(double y) {
-        this.y = y;
-    }
-
-    public double getY() {
-        return this.y;
-    }
-
-
-
-    @Override
-    public void move(double displacementX, double displacementY) {
-        this.x += displacementX;
-        this.y += displacementY;
-    }
-
-
-
-    @Override
-    public double getArea() {
-        return 0.0;
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
     }
 
     @Override
-    public double getPerimeter() {
-        return 0.0;
+    public void moveUp() {
+        y += ySpeed;
+    }
+
+    @Override
+    public void moveDown() {
+        y -= ySpeed;
     }
 
 
+    @Override
+    public void moveLeft() {
+        x -= xSpeed;
+    }
+
+    @Override
+    public void moveRight() {
+        x += xSpeed;
+    }
 
     @Override
     public String toString() {
-        return "This is primitive geometry object called point.";
+        return "MovablePoint{" + "x=" + x + ", y=" + y + ", xSpeed=" + xSpeed + ", ySpeed=" + ySpeed+'}';
     }
-
 }

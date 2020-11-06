@@ -45,7 +45,7 @@ public class Circle extends Shape {
 
     @Override
     public String toString() {
-        return "CIRCLE'S INFO:\nRADIUS: " + this.radius + "\nAREA: " + this.getArea() + "\nCIRCUMFERENCE: " + this.getPerimeter();
+        return "(Circle):\nRadius: " + this.radius + "\nArea: " + this.getArea() + "\nCircumference: " + this.getPerimeter();
     }
 
 }
